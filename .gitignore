@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Local/editor files
+.DS_Store
+.idea/
+.vscode/
+
+# MovieLens data must remain local
+ml-1m/
+data/
+*.dat
+ml-1m.zip
+
