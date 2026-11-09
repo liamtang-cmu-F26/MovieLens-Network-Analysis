@@ -1,0 +1,9 @@
+snapshot,history_length,reference_users,reference_ratings,reference_positive_edges,candidate_movies,candidate_movies_with_positive_degree,targets_with_min_history,targets_with_later_positives,cohort_users,later_positives_before_catalog_filter,positives_outside_catalog,eligible_positives,visible_ratings,users_with_visible_positive,users_with_usable_seed,users_without_usable_seed
+validation,1,3782,552830,323472,3588,3429,1607,142,142,3063,0,3063,142,79,79,63
+validation,5,3782,552830,323472,3588,3429,1607,142,142,3063,0,3063,710,138,138,4
+validation,10,3782,552830,323472,3588,3429,1607,142,142,3063,0,3063,1420,142,142,0
+validation,full,3782,552830,323472,3588,3429,1607,142,142,3063,0,3063,39455,142,142,0
+test,1,4208,625277,365433,3606,3450,1792,321,321,13602,12,13590,321,192,192,129
+test,5,4208,625277,365433,3606,3450,1792,321,321,13602,12,13590,1605,314,314,7
+test,10,4208,625277,365433,3606,3450,1792,321,321,13602,12,13590,3210,321,321,0
+test,full,4208,625277,365433,3606,3450,1792,321,321,13602,12,13590,79687,321,321,0

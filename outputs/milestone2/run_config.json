@@ -1,0 +1,8 @@
+{
+  "validation_cutoff_utc": "2000-12-02T14:52:18+00:00",
+  "test_cutoff_utc": "2000-12-29T23:43:34+00:00",
+  "reference_fraction": 0.7,
+  "split_seed": 755,
+  "assigned_target_users": 1812,
+  "minimum_target_history": 10
+}
