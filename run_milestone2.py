@@ -17,6 +17,7 @@ from movielens_network.milestone2_data import (
     build_snapshot,
     select_target_users,
 )
+from movielens_network.milestone2_evaluation import evaluate_validation
 
 
 ROOT_DIR = Path(__file__).resolve().parent
@@ -28,10 +29,30 @@ def main() -> None:
     audit = commands.add_parser("audit", help="Write cohort counts for validation and test.")
     audit.add_argument("--data-dir", type=Path, default=ROOT_DIR / "ml-1m")
     audit.add_argument("--output-dir", type=Path, default=ROOT_DIR / "outputs" / "milestone2")
+    evaluate = commands.add_parser(
+        "evaluate", help="Run the three baseline recommenders on validation only."
+    )
+    evaluate.add_argument("--data-dir", type=Path, default=ROOT_DIR / "ml-1m")
+    evaluate.add_argument("--output-dir", type=Path, default=ROOT_DIR / "outputs" / "milestone2")
     args = parser.parse_args()
 
     ratings = load_movielens(args.data_dir).ratings
     target_users = select_target_users(ratings)
+    if args.command == "evaluate":
+        snapshot = build_snapshot(
+            ratings, target_users, VALIDATION_CUTOFF, TEST_CUTOFF
+        )
+        result = evaluate_validation(snapshot)
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        metrics_path = args.output_dir / "validation_metrics.csv"
+        per_user_path = args.output_dir / "validation_per_user.csv"
+        result.metrics.to_csv(metrics_path, index=False, float_format="%.10f")
+        result.per_user.to_csv(per_user_path, index=False)
+        print(result.metrics.to_string(index=False, float_format=lambda value: f"{value:.4%}"))
+        print(f"Metrics written to {metrics_path.resolve()}")
+        print(f"Per-user results written to {per_user_path.resolve()}")
+        return
+
     windows = (
         ("validation", VALIDATION_CUTOFF, TEST_CUTOFF),
         ("test", TEST_CUTOFF, None),
