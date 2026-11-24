@@ -41,9 +41,28 @@ def main() -> None:
         "--output-dir", type=Path,
         default=ROOT_DIR / "outputs" / "milestone2" / "analysis",
     )
+    communities = commands.add_parser(
+        "communities", help="Export reference movie graph and community analysis."
+    )
+    communities.add_argument("--data-dir", type=Path, default=ROOT_DIR / "ml-1m")
+    communities.add_argument("--snapshot", choices=("validation", "test"), default="validation")
+    communities.add_argument(
+        "--output-dir", type=Path, default=ROOT_DIR / "outputs" / "milestone2" / "communities"
+    )
     args = parser.parse_args()
 
-    ratings = load_movielens(args.data_dir).ratings
+    data = load_movielens(args.data_dir)
+    if args.command == "communities":
+        from movielens_network.milestone2_communities import analyze_communities
+
+        cutoff = VALIDATION_CUTOFF if args.snapshot == "validation" else TEST_CUTOFF
+        destination = args.output_dir / args.snapshot
+        metadata = analyze_communities(data, cutoff, args.snapshot, destination)
+        print(f"Exported {metadata['candidate_movies']} movies and {metadata['undirected_edges']} edges.")
+        print(f"Found {metadata['communities']} communities. Outputs written to {destination.resolve()}")
+        return
+
+    ratings = data.ratings
     target_users = select_target_users(ratings)
     if args.command == "report":
         from movielens_network.milestone2_analysis import analyze_validation

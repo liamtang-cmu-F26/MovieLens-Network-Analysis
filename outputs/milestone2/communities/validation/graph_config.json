@@ -1,0 +1,43 @@
+{
+  "snapshot": "validation",
+  "cutoff_utc": "2000-12-02T14:52:18+00:00",
+  "reference_fraction": 0.7,
+  "user_split_seed": 755,
+  "reference_ratings": 552830,
+  "reference_users": 3782,
+  "positive_reference_edges": 323472,
+  "reference_ratings_sha256": "fdb7d6a1443662471b7e257eb7a583027ede895c7ee56363eb4dbe54bfa07706",
+  "candidate_movies": 3588,
+  "connected_movies": 3072,
+  "isolated_movies": 516,
+  "undirected_edges": 49129,
+  "components_including_isolates": 517,
+  "largest_component_movies": 3072,
+  "neighbors_per_movie_before_union": 20,
+  "minimum_shared_positive_users": 3,
+  "edge_weight": "binary positive rating cosine similarity",
+  "symmetrization": "union of top neighbours, each undirected edge exported once",
+  "community_algorithm": "weighted Louvain",
+  "community_resolution": 1,
+  "community_threshold": 1e-07,
+  "reported_partition_seed": 755,
+  "stability_seeds": [
+    755,
+    756,
+    757
+  ],
+  "communities": 8,
+  "weighted_modularity": 0.5683914785900039,
+  "versions": {
+    "python": "3.11.0",
+    "networkx": "3.5",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3"
+  },
+  "isolates": "community_id=-1, retained in nodes, excluded from Louvain and stability",
+  "representatives": "three movies with highest weighted graph strength per community",
+  "genre_interpretation": "multi-label genre prevalence, descriptive, no significance test",
+  "stability_interpretation": "algorithm seeds on one fixed graph, not sampling uncertainty",
+  "movie_graph_nodes_sha256": "73736c92dd2f1da5065d68f959f05a8d711d7dc551c0a8ceef4c3ed84f6c6aa6",
+  "movie_graph_edges_sha256": "0e823d98d843a90326ff0dffb387869d4e8dd212bdfdd873d35d4f097c1196b8"
+}

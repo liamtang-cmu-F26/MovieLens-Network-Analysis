@@ -257,5 +257,28 @@ by outgoing weight sums. Keep user cohorts, history definitions, candidates,
 masks, fallback rules, and metrics fixed for those comparisons.
 
 Record method definitions and any selected settings using validation before
-running final test scoring. Weighted variants, test scoring, community analysis,
-and node2vec remain future work in this handoff.
+running final test scoring. Weighted variants, test scoring, and node2vec remain future work.
+The community analysis and graph export are available below.
+
+
+## Movie communities and node2vec graph export
+
+Build the validation reference movie graph and community outputs:
+
+```bash
+python3 run_milestone2.py communities --snapshot validation --data-dir ml-1m
+```
+
+The command uses reference users' earlier positive ratings to construct a
+cosine movie graph with supported neighbours, then runs weighted Louvain
+with three seeds. It exports all candidate movie IDs, weighted edges,
+community assignments, genre composition, partition stability, and a figure
+under `outputs/milestone2/communities/validation/`.
+
+See the [node2vec handoff](docs/NODE2VEC_HANDOFF.md) for the graph rules,
+validation findings, file schemas, loading example, isolate handling, and
+instructions for rebuilding the final test graph. Graph thresholds are fixed
+starting choices. Genre descriptions and modularity are exploratory.
+
+[Community figure](outputs/milestone2/communities/validation/figure_movie_communities.png)
+and [summary table](outputs/milestone2/communities/validation/community_summary.csv).

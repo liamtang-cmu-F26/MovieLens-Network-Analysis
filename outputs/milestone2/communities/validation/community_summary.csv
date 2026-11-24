@@ -1,0 +1,9 @@
+community_id,movies,share_of_connected_movies,mean_positive_reference_degree,internal_strength_share,top_genres,representative_movies
+0,828,0.26953125,98.798309178743963,0.76027777355870685,Drama (66%) | Comedy (26%) | Romance (15%),"Fargo (1996) | Pulp Fiction (1994) | Shawshank Redemption, The (1994)"
+1,636,0.20703125,109.79716981132076,0.80838047875775276,Drama (58%) | Comedy (22%) | Thriller (14%),"Godfather, The (1972) | Chinatown (1974) | Apocalypse Now (1979)"
+2,311,0.10123697916666667,90.668810289389071,0.60979492527764001,Comedy (77%) | Romance (38%) | Drama (32%),Toy Story (1995) | Groundhog Day (1993) | Forrest Gump (1994)
+3,302,0.098307291666666671,76.841059602649011,0.69330938158550848,Action (67%) | Thriller (47%) | Drama (24%),"Fugitive, The (1993) | Independence Day (ID4) (1996) | Hunt for Red October, The (1990)"
+4,299,0.097330729166666671,47.749163879598662,0.75382784078306386,Horror (74%) | Sci-Fi (24%) | Thriller (20%),"Halloween II (1981) | Nightmare on Elm Street, A (1984) | Child's Play (1988)"
+5,286,0.093098958333333329,61.6013986013986,0.70003756785653359,Children's (64%) | Comedy (43%) | Animation (27%),"Cinderella (1950) | Wizard of Oz, The (1939) | Shaggy Dog, The (1959)"
+6,257,0.083658854166666671,243.17120622568095,0.65820241054647044,Action (53%) | Sci-Fi (51%) | Adventure (32%),"Star Wars: Episode V - The Empire Strikes Back (1980) | Matrix, The (1999) | Star Wars: Episode IV - A New Hope (1977)"
+7,153,0.0498046875,166.84313725490196,0.58295456377120569,Comedy (88%) | Drama (20%) | Romance (9%),Ferris Bueller's Day Off (1986) | When Harry Met Sally... (1989) | Ghostbusters (1984)
