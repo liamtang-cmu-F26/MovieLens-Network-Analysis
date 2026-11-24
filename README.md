@@ -275,7 +275,7 @@ with three seeds. It exports all candidate movie IDs, weighted edges,
 community assignments, genre composition, partition stability, and a figure
 under `outputs/milestone2/communities/validation/`.
 
-See the [node2vec handoff](docs/NODE2VEC_HANDOFF.md) for the graph rules,
+See the [Milestone 2 handoff](docs/HANDOFF.md) for the graph rules,
 validation findings, file schemas, loading example, isolate handling, and
 instructions for rebuilding the final test graph. Graph thresholds are fixed
 starting choices. Genre descriptions and modularity are exploratory.
