@@ -1,4 +1,4 @@
-"""Command-line entry point for the Milestone 2 data audit."""
+"""Command-line entry point for Milestone 2 data and validation analysis."""
 
 import argparse
 import json
@@ -34,10 +34,28 @@ def main() -> None:
     )
     evaluate.add_argument("--data-dir", type=Path, default=ROOT_DIR / "ml-1m")
     evaluate.add_argument("--output-dir", type=Path, default=ROOT_DIR / "outputs" / "milestone2")
+    report = commands.add_parser("report", help="Analyze saved validation results and generate figures.")
+    report.add_argument("--data-dir", type=Path, default=ROOT_DIR / "ml-1m")
+    report.add_argument("--results-dir", type=Path, default=ROOT_DIR / "outputs" / "milestone2")
+    report.add_argument(
+        "--output-dir", type=Path,
+        default=ROOT_DIR / "outputs" / "milestone2" / "analysis",
+    )
     args = parser.parse_args()
 
     ratings = load_movielens(args.data_dir).ratings
     target_users = select_target_users(ratings)
+    if args.command == "report":
+        from movielens_network.milestone2_analysis import analyze_validation
+        from movielens_network.milestone2_plots import create_validation_figures
+
+        snapshot = build_snapshot(ratings, target_users, VALIDATION_CUTOFF, TEST_CUTOFF)
+        tables = analyze_validation(snapshot, args.results_dir, args.output_dir)
+        create_validation_figures(tables, args.output_dir)
+        print(f"Validated saved recommendations for {len(snapshot.target_users)} users.")
+        print(f"Four analysis tables and four figures written to {args.output_dir.resolve()}")
+        return
+
     if args.command == "evaluate":
         snapshot = build_snapshot(
             ratings, target_users, VALIDATION_CUTOFF, TEST_CUTOFF

@@ -1,0 +1,15 @@
+{
+  "source_per_user_sha256": "704b9dc676dda78d2ff6bb3901c1c7bee05a87b303556281db130f5f9d59117d",
+  "source_metrics_sha256": "919bc2a96ef8128c26680af703cbf5949ec69c5cada53287c13ccdaf482f3f50",
+  "validation_cutoff_utc": "2000-12-02T14:52:18+00:00",
+  "validation_end_utc": "2000-12-29T23:43:34+00:00",
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 755,
+  "interval": "95% paired user percentile bootstrap, conditional on this snapshot",
+  "multiple_comparison_adjustment": "none; exploratory comparisons",
+  "subgroups": "Same users for every method within each history, grouped by positive reference seed availability.",
+  "popularity": "Count of positive ratings by reference users strictly before the cutoff.",
+  "coverage_denominator": 3588,
+  "hidden_rated_share": "Recommendation slots rated before cutoff but hidden in the selected history.",
+  "empty_subgroups": "Metrics are blank when users = 0."
+}

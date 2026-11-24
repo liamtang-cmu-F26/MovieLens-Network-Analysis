@@ -39,6 +39,7 @@ def evaluate_validation(snapshot: Snapshot) -> EvaluationResult:
         raise ValueError("The reference graph has no candidate movies.")
 
     reference_positive = snapshot.positive_edges
+    positive_movie_ids = set(reference_positive["movie_id"])
     reference_users = pd.Index(
         np.sort(reference_positive["user_id"].unique()), name="user_id"
     )
@@ -102,7 +103,7 @@ def evaluate_validation(snapshot: Snapshot) -> EvaluationResult:
             visible_count_by_user[user_id] = len(history)
             seen_by_user[user_id] = set(history["movie_id"].astype(int))
             positive_seeds = history.loc[history["rating"].ge(4), "movie_id"].astype(int)
-            usable = [movie_id for movie_id in positive_seeds if movie_id in movie_to_col]
+            usable = [movie_id for movie_id in positive_seeds if movie_id in positive_movie_ids]
             usable_seed_count[user_id] = len(set(usable))
             row = target_to_row[user_id]
             seed_rows.extend([row] * len(set(usable)))
